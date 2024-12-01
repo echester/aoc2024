@@ -4,50 +4,34 @@
 # advent of code 2024 | ed chester
 # day 1
 #
-# "  "
+# "Historian Hysteria"
 #
 # Massive props to Eric for another year of near-insanity in the 
 # pursuit of superior code skillz.
 #
- 
-use v5.10;
-use strict;
-use warnings;
-use Data::Dumper;
+# For the avoidance of doubt - the comments were written afterwards, and the print debug
+# removed... i'm not that professional. Fo real. 
 
-my @lines;
-
+# initialise stuffs
+my @left = my @right = ();
 my $c=0;
 
+# grab input, dropping columm values into separate arrays
 while(<>) {
-	chomp;
-	push @lines, $_;
-
-	# print "$_\n";
-	#/^(\w)\s+(\d+)\s+\((.+)\)/;
-
-
+	/^(\w+)\s+(\w+)/;
+	push @left, $1;
+	push @right, $2;
 }
 
-say Dumper(@lines);
+# sort both arrays
+@left = sort @left;
+@right = sort @right;
 
+# part 1 - sum absolute differences of corresponding array elements
+for (my $i=0; $i<=$#left; $i++) { $c += abs($left[$i] - $right[$i]); }
+printf "Part 1 = %d\n", $c;
 
-# use strict;
-# use warnings;
-
-# my $infile = (defined $ARGV[0]) ? $ARGV[0] : 'input.dat';
-# open (INF, '<', $infile) || die "$!\n";
-
-# my $c=0;
-# while(<INF>) {
-# 	chomp;
-
-	
-# 	s/[a-z]//gi;
-# 	my $f = substr $_, 0, 1;
-# 	my $l = substr $_, -1, 1;
-# 	$c += "$f$l";
-
-# }
-# close INF;
-# print $c;
+# part 2 - accumulate left column values multiplied by their incidence in the right column
+$c = 0;
+foreach my $l (@left) { $c += $l * grep {$_ eq $l} @right; }
+printf "Part 2 = %d\n", $c;
