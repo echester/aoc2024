@@ -7,13 +7,15 @@ The _"comments"_ like this for each day are header comments from my code. For th
 
 ## Day 1 - Historian Hysteria
 
-[PERL]
+[PERL, RAKU]
 
 _"Massive props to Eric for another year of near-insanity in the pursuit of superior code skillz. For the avoidance of doubt - the comments were written afterwards, and the print debug
  removed... i'm not that professional. fo real."_
 
 This was a suitable day 1 challenge, just grokking input and searching a list. Couple of interesting things for me: firstly that i messed up using a grep for part2 initially because of a stupid typo caused by my eyes being closed at 5am. 
 The other is that I used an untyped sort, which assumes the inputs are strings. The correct way to do this would be the spaceship operator ```<=>``` to force numerical sort, but for my input file, it worked anyway. I can imagine cases where it might not.
+
+For practice, I made the raku equivalent after submission.
 
 ## Day 2 - Red-Nosed Reports
 
@@ -32,3 +34,8 @@ my @newarr = @arr[ @idxlist ];
 
 ## Day 3 - 
 
+[PERL]
+
+_" "_
+
+here goes.
