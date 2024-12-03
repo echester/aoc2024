@@ -11,18 +11,14 @@
 # multiple lines, but that was a quick fix. 
 
 $/ = undef;
-my @o;
-my $s=0;
-my $m=1;
+my $s = 0;
+my $m = 1;
 
 while(<>) {
-	@o = $_ =~ /(?:mul\(\d{1,3},\d{1,3}\)|don't\(\)|do\(\))/g;
+	foreach ($_=~/(?:mul\(\d{1,3},\d{1,3}\)|don't\(\)|do\(\))/g) {
+		if (/\w+\((\d+),(\d+)/) { $s += $m*$1*$2; }
+		elsif (/^don\'t/)       { $m = 0; }
+		else                    { $m = 1; }
+	}
 }
-
-foreach (@o) {
-	if (/\w+\((\d+),(\d+)/) { $s += $m*$1*$2; }
-	elsif (/^don\'t/)       { $m = 0; }
-	else                    { $m = 1; }
-}
-
-print "$s\n";
+printf "%d\n", $s;
