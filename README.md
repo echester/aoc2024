@@ -7,7 +7,7 @@ The _"comments"_ like this for each day are header comments from my code. For th
 
 ## Day 1 - Historian Hysteria
 
-[PERL, RAKU]
+[PERL, RAKU, VERILOG]
 
 _"Massive props to Eric for another year of near-insanity in the pursuit of superior code skillz. For the avoidance of doubt - the comments were written afterwards, and the print debug
  removed... i'm not that professional. fo real."_
@@ -16,6 +16,19 @@ This was a suitable day 1 challenge, just grokking input and searching a list. C
 The other is that I used an untyped sort, which assumes the inputs are strings. The correct way to do this would be the spaceship operator ```<=>``` to force numerical sort, but for my input file, it worked anyway. I can imagine cases where it might not.
 
 For practice, I made the raku equivalent after submission.
+
+### Behavioural Verilog 
+
+Each year, I try to consider which day problem would work as a pure hardware solution, and if i get close, might do it. This was a stupid idea I had during Advent of Code a few years back where some Elves had an unconventional ALU (Monad?) and I wanted to see if would work. 
+
+Anyway, TDLR; - I have written behavioural verilog that solves both parts of day 1. You will need a verilog simulator to run it.
+I chose day 1 already because the input looks like a memory map. The only slight-of-hand is that it needs to be converted to hex first (i've added a utility for making a proper memory file, but you can directly use converted values.)
+It assumes your inputs fit in single-length integers.
+The barrier here is implementing bubble sort in hardware, which
+is totally doable but is easiest with microcode, at which point this
+behavioural model isn't even close. 
+
+If I have time I'll get it done with a counter and a pair of registers. _Do not hold your breath._
 
 ## Day 2 - Red-Nosed Reports
 
