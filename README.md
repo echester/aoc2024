@@ -32,10 +32,25 @@ Probably the only interesting thing from a language standpoint is assembling an 
 my @newarr = @arr[ @idxlist ];
 ```
 
-## Day 3 - 
+## Day 3 - Mull It Over
 
 [PERL]
 
-_" "_
+ _"YES! Finally a regex day, this is my wheelhouse."_
 
-here goes.
+ Fully straightforward parsing test, about which there is little to say tbh.
+ I did fall into the obvious gotcha of having operations broken over 
+ multiple lines, but that was a quick fix by using _slurp mode_, which is a way of grabbing an entire file into a single string ignoring line breaks.
+ This is achieved (in perl, and elsewhere) by removing the record separator, thus:
+ ```
+ $/ = undef;
+ ```
+ The rest is self-explanatory.
+
+ ## Day 4 - 
+
+ [PERL]
+
+ _" "_
+
+ 
