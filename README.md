@@ -60,10 +60,18 @@ my @newarr = @arr[ @idxlist ];
  ```
  The rest is self-explanatory.
 
- ## Day 4 - 
+ ## Day 4 - Ceres Search
 
  [PERL]
 
- _" "_
+ _"An inelegant shambles."_
 
+I started late, I took an age, I had several false starts, and it was a
+ shambles. Doing the following is inelegant, but it worked well because 
+ the search strings are short.
+
+ in part 2 i was allowing every possible kind of crossing, which after
+ reading the instructions again made it much easier - just deleted a 
+ bunch of checks. the only interesting thing here was inverting the usual
+ trick to uniqify an array, to instead report only elements that were duplicated.
  
