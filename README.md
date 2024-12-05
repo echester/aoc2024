@@ -75,3 +75,20 @@ I started late, I took an age, I had several false starts, and it was a
  bunch of checks. the only interesting thing here was inverting the usual
  trick to uniqify an array, to instead report only elements that were duplicated.
  
+## Day 5 - Print Queue
+
+[PERL]
+
+Print debug rUleZ ... and that's all i have to say about that. Not.
+Today was the day I needed a CPAN module and i discovered my whole
+environment was borked. Installed a fresh VM for part 2.
+Binned it. Swapped machines.
+Secure erased disk in primary workstation. Reinstalled environments.
+THAT'S what i think about AoC today. If H wasn't off school with 
+a vomitting bug I'd be as frustrated as a woodpecker with a rubber beak,
+but as it happens, dealing with all this was kinda fun. In the
+limit where 'kinda' takes very, very small values.
+
+After solving part2, it became clear that my approach for part1 was grossly 
+inefficient - i was focussed on the update pages and not the rules. I've kept
+it as a monument called _Too Many Loops_, and added a 'v2' update which runs over 10x faster.
