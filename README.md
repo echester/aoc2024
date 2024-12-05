@@ -79,7 +79,9 @@ I started late, I took an age, I had several false starts, and it was a
 
 [PERL]
 
-Print debug rUleZ ... and that's all i have to say about that. Not.
+_"Print debug rUleZ "_
+
+... and that's all i have to say about that. Not.
 Today was the day I needed a CPAN module and i discovered my whole
 environment was borked. Installed a fresh VM for part 2.
 Binned it. Swapped machines.
