@@ -21,12 +21,15 @@ my $p=3;
 
 while(<>) {
 	chomp;
-	my $t = '.'x$p . $_ . '.'x$p;
+	my $t = '.'x$p . $_ . '.'x$p; # pad the rows to embed in a sea of other symbols
 	push @grid, [split //, $t];
 }
 
-for (0..2) { push @grid, [ split //, '.'x($#grid+$p+$p+1) ]; }
-for (0..2) { unshift @grid, [ split //, '.'x($#grid+$p+$p+1) ]; }
+# embed the grid in a sea of other symbols 
+for (0..$p) { 
+	push @grid, [ split //, '.'x($#grid+$p+$p+1) ];
+	unshift @grid, [ split //, '.'x($#grid+$p+$p+1) ]; 
+}
 
 for (my $r=0; $r<=$#grid; $r++) {	
 	for (my $c=0; $c<=$#grid; $c++) {
