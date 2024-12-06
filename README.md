@@ -119,3 +119,9 @@ if ($nh->{block} == 1) {
 		elsif ($dir eq 'v') { $dir = '<'; }
 		elsif ($dir eq '<') { $dir = '^'; }
 ```
+Some time later... so that sucked, and was replaced by this, which is far
+swishier:
+```perl
+if ($nh->{block} == 1) { push @move, shift @move; }
+```
+because i dropped the keys from the %move hash and just now have an ordered list to rotate through as the guard meets a blockage. Tidy.
