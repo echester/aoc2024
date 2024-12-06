@@ -94,3 +94,18 @@ limit where 'kinda' takes very, very small values.
 After solving part2, it became clear that my approach for part1 was grossly 
 inefficient - i was focussed on the update pages and not the rules. I've kept
 it as a monument called _Too Many Loops_, and added a 'v2' update which runs over 10x faster.
+
+## Day 6 - Guard Gallivant
+
+[PERL]
+
+_"Could really have done without another grid straight away, but hey-ho(-ho-ho)."_
+
+This was also the first time that a hash looked immediately like the right thing
+to do, because even though part 1 looked like it was solvable by popping some values
+into a list of locations, I was suspicious that part2 might need to know a bit more
+about each location. As such, over-engineered part1 and this (part 1, v2) is a cleaned 
+up version pared back somewhat. As it worked out, part2 flumoxed me for a while: I
+tried just looking for a large number of moves being exceeded as some threshold for
+looping, but that's shoddy. Instead of looking at where the guard has been, it now tracks
+where she's been and which was she was heading when arriving there. Simples. (As if).
