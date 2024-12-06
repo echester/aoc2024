@@ -41,7 +41,7 @@ This took me much longer than the code would have you believe. I tried to be too
 Had to leave for school run and meetings, and did it quickly having thought about it on the walk. What's left is an ugly brute-force iteration over the possible arrays, and I'm not inspired to find a sneakier way. Comments added to the part 2 function so I remember later how it works ;)
 
 Probably the only interesting thing from a language standpoint is assembling an array using another array holding a set of indices:
-```
+```perl
 my @newarr = @arr[ @idxlist ];
 ```
 
@@ -55,7 +55,7 @@ my @newarr = @arr[ @idxlist ];
  I did fall into the obvious gotcha of having operations broken over 
  multiple lines, but that was a quick fix by using _slurp mode_, which is a way of grabbing an entire file into a single string ignoring line breaks.
  This is achieved (in perl, and elsewhere) by removing the record separator, thus:
- ```
+ ```perl
  $/ = undef;
  ```
  The rest is self-explanatory.
@@ -109,3 +109,13 @@ up version pared back somewhat. As it worked out, part2 flumoxed me for a while:
 tried just looking for a large number of moves being exceeded as some threshold for
 looping, but that's shoddy. Instead of looking at where the guard has been, it now tracks
 where she's been and which was she was heading when arriving there. Simples. (As if).
+
+This whole block of code dealing with the guard turning right is pretty lame, I should have done something with counting blockages-modulo-4.
+```perl
+if ($nh->{block} == 1) {
+		# blocked, turn to the right
+		if ($dir eq '^') { $dir = '>'; }
+		elsif ($dir eq '>') { $dir = 'v'; }
+		elsif ($dir eq 'v') { $dir = '<'; }
+		elsif ($dir eq '<') { $dir = '^'; }
+```
