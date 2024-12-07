@@ -125,3 +125,34 @@ swishier:
 if ($nh->{block} == 1) { push @move, shift @move; }
 ```
 because i dropped the keys from the %move hash and just now have an ordered list to rotate through as the guard meets a blockage. Tidy.
+
+## Day 7 - Bridge Repair
+
+[PERL]
+
+_"Whoop ops up the combomatch parsetree to cross a crapbridge..."_
+
+I love this kind of puzzle: easy, no gotchas, no weird background knowledge
+required other than how to permute a set of objects. Part 2 was a pleasingly
+trivial extension to part 1. Very much my wheelhouse.
+
+Now obviously I could have implemented my own operator-combination-generator-tron
+and i almost did using a binary scheme, but was wary of falling in a trap for part 2.
+Now that I know its not a problem, I _might_ go back and do that just to remove the
+dependency on the `Algorithm::` module.
+
+Here's the core of the thing, which is nice and compact:
+```perl
+foreach (variations_with_repetition(\@ops, -1 + scalar @v)) {
+	if (calc (\@v, $_) == $r) { $total += $r; last; }
+}
+```
+
+There's an obvious optimisation I didn't implement (yet): you don't need to calculate the value for each entry row using all the operators and operands - you can skip any of that after you already know its not going to match the target value on the left. Its not a big deal, but would make it even faster.
+
+Part 2 was a 1-line change, which is a nice relief; just handling a fresh operator:
+```perl
+elsif ($o eq 'c') { $r .= $v; }
+```
+It all reminded me of day 9 part 2 in 2023 where there's a subtle change that could ruin everything, or if you were lucky with your approach to part 1, a trivial solution to part 2. More of these please, before it gets harder...
+
