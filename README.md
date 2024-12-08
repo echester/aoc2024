@@ -167,11 +167,12 @@ The challenge is fair, but was deliberately described in a complex way, possibly
 thwart AI solvers.
 
 For part 2, I failed to consider the zeroth order harmonic, so was off by the number
-of antennas for a long time. The code below does both parts, and there's nothing to
-proud of anywhere in sight. My main laziness was to not both properly loading and dereferencing arrays in perl, so because they are only coordinates, I did my usual thing of just using strings of coords joined by `_`:
+of antennas for a long time. The code does both parts with a switch in the code, and there's nothing to
+proud of anywhere in sight. My main laziness was to not bother properly loading and dereferencing arrays in perl, so because they are only coordinates, I did my usual thing of just using strings of coords joined by `_`:
 ```perl
 sub j { return join '_', @_; }
 ```
 Sure, it means adding some `split` functions hither and thither, but otherwise I'd be adding hash subscripts and dereferences and when i'm asleep that's just unnecessary work. 
+
 There is a simplication here that I could easily make: we don't need a hash because we don't care what the frequencies (antenna types) are: we could just stuff their locations into an array of arrays. Can I be bothered? Nope.
 
