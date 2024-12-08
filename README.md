@@ -156,3 +156,22 @@ elsif ($o eq 'c') { $r .= $v; }
 ```
 It all reminded me of day 9 part 2 in 2023 where there's a subtle change that could ruin everything, or if you were lucky with your approach to part 1, a trivial solution to part 2. More of these please, before it gets harder...
 
+## Day 8 - "Resonant Collinearity"
+
+[PERL]
+
+This is not how antennas work, for the record.
+
+This took far longer than it ought to have, and I made excessive use of print debug.
+The challenge is fair, but was deliberately described in a complex way, possibly to
+thwart AI solvers.
+
+For part 2, I failed to consider the zeroth order harmonic, so was off by the number
+of antennas for a long time. The code below does both parts, and there's nothing to
+proud of anywhere in sight. My main laziness was to not both properly loading and dereferencing arrays in perl, so because they are only coordinates, I did my usual thing of just using strings of coords joined by `_`:
+```perl
+sub j { return join '_', @_; }
+```
+Sure, it means adding some `split` functions hither and thither, but otherwise I'd be adding hash subscripts and dereferences and when i'm asleep that's just unnecessary work. 
+There is a simplication here that I could easily make: we don't need a hash because we don't care what the frequencies (antenna types) are: we could just stuff their locations into an array of arrays. Can I be bothered? Nope.
+
