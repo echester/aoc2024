@@ -253,4 +253,14 @@ $ nytprofhtml --open 						 # then open the index.html report
 $ dot -Tsvg nytprof/subs-callgraph.dot  	 # optional graph generator
 ```
 
-This was pleasingly straightforward, and there's a real risk I might do it again.
+This was pleasingly straightforward, and there's a real risk I might do it again. Here's the 2nd profiler run, for fun:
+![screengrab of part of profiler output](https://github.com/echester/aoc2024/blob/10/profiler.png?raw=true)
+In the list of this I learned today - here's me putting an image in a github readme. Colour me chuffed.
+
+## Day 11 -
+
+[PERL]
+
+
+
+
