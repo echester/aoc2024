@@ -176,7 +176,8 @@ Sure, it means adding some `split` functions hither and thither, but otherwise I
 
 There is a simplication here that I could easily make: we don't need a hash because we don't care what the frequencies (antenna types) are: we could just stuff their locations into an array of arrays. Can I be bothered? Nope.
 
-_Afterthought_ - the initial working version of this used Algorithm::Combinatorics because really, why not?. The final version ditched it and included my own pair-wise index generator, thus:
+_Afterthought_ - the initial working version of this used 
+`Algorithm::Combinatorics` because really, why not?. The final version ditched it and included my own pair-wise index generator, thus:
 ```perl
 sub duos {
 	my $n = shift;
