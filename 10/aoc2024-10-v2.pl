@@ -1,11 +1,14 @@
 #!/usr/bin/perl
-# aoc2024-10
+# aoc2024-10-v2
 
 # advent of code 2024 | ed chester
 # day 10 - Hoof It
 
 # urgh. DFS. or BFS, depending whether i can remember which would be better here.
 # This was weird - solved part2 before part1, and had to undo a change for part2.
+#
+# SHOCKER - i profiled my code and realised some obvious improvements. This is v2.
+# Also - Devel::NYTProf is FAR superior to Devel:DProf, its amazing.
 
 use Time::HiRes qw| time |;
 my $t_begin = time();
@@ -21,9 +24,13 @@ while(<>) {
 
 my $ways = 0;
 my $ratings = 0;
-my @trailheads = findlevel(0);
 
-foreach (@trailheads) {
+my @elev;
+for (my $i=0; $i<=9; $i++) {
+	$elev[$i] = [findlevel($i)];
+}
+
+foreach (@{$elev[0]}) {
 	my @path;
 	my @peaks;
 	push @path, $_;
@@ -32,8 +39,7 @@ foreach (@trailheads) {
 		my $h = pop @path;
 		push @peaks, $h if ($map{$h} == 9);
 		my @next = adj($h, $#map, $#map);
-		my @valid = findlevel($map{$h} + 1);
-		push @path, $_ foreach intersect(\@next, \@valid);
+		push @path, $_ foreach intersect(\@next, \@{$elev[$map{$h} + 1]});
 	}
 
 	$ways += scalar uq(@peaks);
