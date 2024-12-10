@@ -222,3 +222,35 @@ sub intersect {
 }
 ```
 I liked today. The first of the path finding problems, more to come. One day soon it'll be _A*_.
+
+### Optimising Day 10
+
+So in the discord I am in this year there are galaxybrainfolx who compare their execution times, measured in 10s of milliseconds.
+My code, which I thought pretty clean, took 4.5 _seconds_, around 1000 times slower. Now in fairness, i'm using an interpreted language,
+and inside a virtual machine with a single slow processor, but this was clearly naff.
+
+For the first time since working on the Beagle-2 mission, I profiled my code - and it was far easier and useful than it ever used to be.
+`Devel::NYTProf ` is a spectacularly good profiler for perl, which showed me immediately where the biggest problem was. Check this out:
+```perl
+while (@path) {
+		my $h = pop @path;
+		push @peaks, $h if ($map{$h} == 9);
+		my @next = adj($h, $#map, $#map);
+		my @valid = findlevel($map{$h} + 1); # <-- !!!!
+		push @path, $_ foreach intersect(\@next, \@valid);
+	}
+```
+... at the line with the !!!! comment, I'm searching the whole map to get the set of nodes at a certain level, and in that loop, I do it
+every time I arrive at a node. But the levels don't change, and there are only 10 levels - so v2 of the code removes this and evaluates
+all 10 sets before starting to explore the map, and then it just looks up the answer. Its kinda what the young-uns call `memoization` (I _think_).
+This saved 85% of the execution time. Re-profiling it shows that the `intersect()` routine above dominates now _by far_. So, I'm expecting
+`Array::Utils` or `List::Utils` to improve upon that further.
+
+The profiler steps (because I will forget them otherwise) were:
+```bash
+$ perl -d:NYTProf aoc2024-10-v2.pl input.txt # profile the code
+$ nytprofhtml --open 						 # then open the index.html report
+$ dot -Tsvg nytprof/subs-callgraph.dot  	 # optional graph generator
+```
+
+This was pleasingly straightforward, and there's a real risk I might do it again.
