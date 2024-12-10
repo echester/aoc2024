@@ -176,6 +176,7 @@ Sure, it means adding some `split` functions hither and thither, but otherwise I
 
 There is a simplication here that I could easily make: we don't need a hash because we don't care what the frequencies (antenna types) are: we could just stuff their locations into an array of arrays. Can I be bothered? Nope.
 
+_Afterthought_ - the initial working version of this used `Algorithm::Combinatorics` because really, why not?. The final version ditched it and included my own pair-wise index generator, thus:
 _Afterthought_ - the initial working version of this used 
 `Algorithm::Combinatorics` because really, why not?. The final version ditched it and included my own pair-wise index generator, thus:
 ```perl
@@ -191,3 +192,34 @@ sub duos {
 }
 ```
 Yes, it uses `j` and supports my Library Of Laziness.
+
+## Day 9 -
+
+[PERL]
+
+One third of the way through this `misery||fun`.
+
+
+## Day 10 - Hoof It
+
+[PERL]
+
+Urgh. DFS. or BFS, depending whether i can remember which would be better here.
+But then I wrote it, and actually recursion wasn't necessary, just a queue of places to check,
+and it was weirdly easy. The first cut which worked used a 2D array to hold values, but the locations
+didn't matter, and to make the helper functions easier I rewrote it using row_col as hash keys.
+This was a weird one though - solved part2 before part1, and had to undo a change for part2.
+Not sure there's anything interesting in the code today. If I'd been using something contemporary,
+there'd be a cleaner way to get the intersection of two arrays. For completeness, here's my
+intersection routine, which is _kinda_ idiomatic:
+```perl
+sub intersect {
+	my ($ar, $br) = @_;
+	my @set;
+	my %count = ();
+	foreach (@$ar, @$br) { $count{$_}++; }
+	foreach my $e (keys %count) { push @set, $e if ($count{$e} > 1); }
+	return @set;
+}
+```
+I liked today. The first of the path finding problems, more to come. One day soon it'll be _A*_.
