@@ -249,17 +249,42 @@ This saved 85% of the execution time. Re-profiling it shows that the `intersect(
 The profiler steps (because I will forget them otherwise) were:
 ```bash
 $ perl -d:NYTProf aoc2024-10-v2.pl input.txt # profile the code
-$ nytprofhtml --open 						 # then open the index.html report
-$ dot -Tsvg nytprof/subs-callgraph.dot  	 # optional graph generator
+$ nytprofhtml --open 					# then open the index.html report
+$ dot -Tsvg nytprof/subs-callgraph.dot   # optional graph generator
 ```
 
 This was pleasingly straightforward, and there's a real risk I might do it again. Here's the 2nd profiler run, for fun:
+
 ![screengrab of part of profiler output](https://github.com/echester/aoc2024/blob/main/10/profiler.png?raw=true)
-In the list of this I learned today - here's me putting an image in a github readme. Colour me chuffed.
+
+In the (list of things I learned today)++ - here's me putting an image in a github readme. Colour me chuffed.
 
 ## Day 11 -
 
 [PERL]
+
+_"I will try anything at all, no matter how likely to be fruitless or time consuming, before actually resigning myself to writing a recursive function :/
+
+Is this an effective strategy? Hell no._
+
+This was hard. A classic AoC bigint, nonlinear, exponential growth kinda hard. Part 1 trivial, or nearly trivial anyway provided you are awake and ignore a lot of the information in the instructions.
+
+Part 2 history unfolded thus:
+- just try brute force. Whoa.
+- total rewrite using a list of engravings (stone values) instead of a list of stones. This was *way* better but the problem with exponentials is that if even you start further down the curve, you quickly catch up to the miserable high values you had before. My run borked out at a quarter of a billion different stone engravings after only 41 blinks. Not remotely close.
+- total rewrite using recursion which i loathe, but here it was necessary. The key realisation here is that any stone has no effect upon any other stone, all it does is generate more stones itself. We don't care how many there are of each type, so the hashmap i built in the previous attempt doesn't exist, so can't grow exponentially. Phew! I had to read up on how to make recursion work in perl, and this took a couple of goes. I wanted to set it in a loop, but you have to kind of let go of this and trust the force. The tracking variable inside the `blink()` call stops each stone when it reaches the max number of blinks, and then counts just itself.
+
+Now then, this runs, but by testing on small numbers of blinks beyond 25 (27, 29) - it was clearly still going to run for _freakin ages_. `blink()` spends a lot of its time evaluating stone evolution for starting stones it has already seen... so then had to learn about memoization in perl, which i have never actually used.
+
+Massive props to someone called Mark Jason Dominus who wrote a CPAN module called `Memoize`, and hot damn it does exactly what you want, without any fuss or configuration or anything. I'll definitely profile this afterwards, because the whole thing takes no time at all when its used, and many many minutes when it isn't. This is likely to be a game-changer in future puzzles! It's this easy to use:
+```perl
+use Memoize;
+memoize('blinklikeafreak');
+```
+
+
+
+
 
 
 
