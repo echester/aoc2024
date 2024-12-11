@@ -263,9 +263,9 @@ In the (list of things I learned today)++ - here's me putting an image in a gith
 
 [PERL]
 
-_"I will try anything at all, no matter how likely to be fruitless or time consuming, before actually resigning myself to writing a recursive function :/
+_"I will try anything at all, no matter how likely to be fruitless or time consuming, before actually resigning myself to writing a recursive function :/_
 
-Is this an effective strategy? Hell no._
+_Is this an effective strategy? Hell no._
 
 This was hard. A classic AoC bigint, nonlinear, exponential growth kinda hard. Part 1 trivial, or nearly trivial anyway provided you are awake and ignore a lot of the information in the instructions.
 
