@@ -282,6 +282,25 @@ use Memoize;
 memoize('blinklikeafreak');
 ```
 
+## Day 12 -
+
+_ongoing shambles_
+
+## Day 13 - Claw Contraption
+
+[PERL]
+
+_Oh my days I was really expecting this to be an application of Chinese Remainder Theorem,
+which I would have implemented incorrectly and then given up on._
+
+As it was, this is a straightforward simultaneous equation solution solved with row-echelon
+reduction. I did have to look up what you do instead of determinants, but the 2 sub-determinants
+work well and are used directly anyway. Tidy.
+
+(Just as well because i'm still debugging part 2 of yesterday and its major t!MeSuXoR)
+
+
+
 
 
 
