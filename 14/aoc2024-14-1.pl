@@ -53,25 +53,3 @@ sub move {
 		$robots[$nr] = [$newc, $newr, $vc, $vr];
 	}
 }
-
-sub grid {
-	my @g;
-	for (my $r=0; $r<$maxr; $r++) {
-		for (my $c=0; $c<$maxc; $c++) { $g[$c][$r] = '.'; }
-	}
-	foreach (@robots) {
-		my ($rc, $rr, $vc, $vr) = $_->@*;
-		$g[$rc][$rr] = '*';
-	}
-	return @g;
-}
-
-sub show {
-	my $gr = shift;
-	my @g = $gr->@*;
-	for (my $r=0; $r<$maxr; $r++) {
-		for (my $c=0; $c<$maxc; $c++) { print $g[$c][$r]; }
-		print "\n";
-	}
-	print "\n";
-}
