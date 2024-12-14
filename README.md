@@ -299,6 +299,22 @@ work well and are used directly anyway. Tidy.
 
 (Just as well because i'm still debugging part 2 of yesterday and its major t!MeSuXoR)
 
+## Day 14 - Restroom Redoubt
+
+[PERL]
+
+Very much a straightforward part 1 just moving robots around a wrapped grid. Part 2 felt impossible
+or unfair until I looked back at the crazy LED display stuff from previous years and wondered
+what Eric's tree might look like. Here's the line that does the job in my part 2 code:
+```perl
+do { move(); $i++;} until (lookslikeathingericthinkslookslikeatree());
+```
+where `lookslikeathingericthinkslookslikeatree()` is waiting for a line to contain a load of consecutive robots.
+I started with a line of 6, but this didn't look like a tree, so arbitrarily raised it to 8 and expected to go
+higher, but 8 worked fine :) Here's my tree:
+
+![robots aligning as a tree picture](https://github.com/echester/aoc2024/blob/main/14/tree.png?raw=true)
+
 
 
 
