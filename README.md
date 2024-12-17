@@ -315,12 +315,55 @@ higher, but 8 worked fine :) Here's my tree:
 
 ![robots aligning as a tree picture](https://github.com/echester/aoc2024/blob/main/14/tree.png?raw=true)
 
+## Day 17 - Chronospatial Computer
 
+[PERL]
 
+_"This took literally all day. I hate it. All the more because I loved part 1."_
 
+Instead of actual discussion here, I'm going to just paste the code, remove the code, and leave the comments. That'll indicate how I felt about it.
 
+```perl
+# Without a doubt the hardest day 17 i've ever done, and I've done some fairly epic hikes.
+# enable bitwise fiascos
+# just to grab the lowest value at the end
+# registers
+# program
+# stack pointer
+# part 1
+# part 2
+# loop over output values from the end
+# store found possibles
+# loop over the set of previous possibles
+# loop over all of the following 8 values above the possible
+# get the subset of the program to check against
+# stringify them because I CANNOT BE BOTHERED TO IMPLEMENT ARRAY COMPARISON, OK??!?!?!
+# get the actual output running with this possible target value
+# check if the machine output matches the expected program subset
+# sodding smartmatch is deprecated. wonder why.
+# empty the possibility list
+# empty your soul into your bin of hopes
+# and drop the new folx into it - YES I SHOULD BE USING SPLICE BUT I'M FREAKING WORN OUT BY THIS PUZZLE
+# get start value
+# initialise stack pointer
+# output digit list
+# run like a lizard on hot soup
+# bork if the stack pointer's left the arena
+# grab instruction and operand from the list
+# ugly switch thing to call relevant operation sub
+# shuffle along to the next instruction
+```
 
+In fairness, there are some neat little bits of code that do all the fun things from part 1:
+```perl
+sub adv { $a = $a >> combo(shift); }
+sub bdv { $b = $a >> combo(shift); }
+sub cdv { $c = $a >> combo(shift); }
+sub bxl { $b = $b ^ shift; }
+sub bst { $b = combo(shift) % 8;}
+sub jnz { $j = shift() - 2 unless !$a; }
+sub bxc { $b = $b ^ $c; }
+sub out { my ($ar, $x) = @_; push @$ar, combo($x) % 8; }
+```
 
-
-
-
+Are they worth it? Absolutely not.
