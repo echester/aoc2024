@@ -372,7 +372,6 @@ Are they worth it? Absolutely not.
 
 [PERL]
 
-This lo
 Edgar Dijkstra is the DUDE. Today's solution was made mostly by deleting stuff from day 16.
 The input parsing needed to be changed up, and then tweaked for part 2.
 I made a _super classic n00b-asshat error_: my `clean()` function below started out being called
