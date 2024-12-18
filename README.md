@@ -367,3 +367,45 @@ sub out { my ($ar, $x) = @_; push @$ar, combo($x) % 8; }
 ```
 
 Are they worth it? Absolutely not.
+
+## Day 18 - RAM Run
+
+[PERL]
+
+This lo
+Edgar Dijkstra is the DUDE. Today's solution was made mostly by deleting stuff from day 16.
+The input parsing needed to be changed up, and then tweaked for part 2.
+I made a _super classic n00b-asshat error_: my `clean()` function below started out being called
+`reset()` to restart the dijkstra. But... `reset` is a reserved word as its a perl function (that
+I've never used): it clears variables and pattern matches so they can be used again.
+Part 1 code got cleaned up just a little, and part 2 is just about putting part 1 in a loop
+with an ever-growing list of obstacles. Given it takes about a second to solve a single map,
+I used a coarse binary search using part 1 code to move the starting point to within 10 nodes
+(bytes) of the answer.
+
+***NOTE TO FUTURE SELF*** This works in row,column order, which is backwards compared to the input.
+You *absolutely will* screw up in the future because of this, but you can't say you weren't warned.
+
+I'm going to drop my dijk routine in here because i will almost certainly want it and i'll want it
+to be easier to find. It needs `genEdges()` and `clean()` to initialise stuff before it works. And,
+obviously, the data structures for valid nodes and obstructions. And start and end. And a SHEDTON of
+following wind karma, and the blessing of a flock of path-routing faeries. There you go; that was warning \#2.
+```perl
+sub dijk {
+	my ($from, $to) = @_;
+	while (my $here = $stack->pop()) {
+		if ($here eq $to) { return $nodes{$to}->{dist}; };
+		$nodes{$here}->{v} = 1;
+		foreach my $next (@{$nodes{$here}->{edges}}) {
+			next if ($nodes{$next}->{v} == 1);
+			my $newdist = $nodes{$here}->{dist} + 1;
+			my $d = $nodes{$next}->{dist};
+			if ($newdist < $d) {
+				$nodes{$next}->{dist} = $newdist;
+				$stack->insert($next, $newdist);
+			}
+		}
+	}
+	return -1;
+}
+```
