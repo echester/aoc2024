@@ -25,6 +25,7 @@ memoize('countMyFunkyTowelsNowSirOhYes');
 
 my @patterns;
 my @designs;
+my ($part1, $part2);
 
 while(<>) {
 	chomp;
@@ -35,28 +36,23 @@ while(<>) {
 
 my $c = 0;
 foreach (@designs) {
-	$c += countMyFunkyTowelsNowSirOhYes($_, \@patterns, 0);
+	my $d = countMyFunkyTowelsNowSirOhYes($_, \@patterns);
+	$part1 += $d > 0;
+	$part2 += $d;
 }
 
-say "Part1 = $c";
-
-$c = 0;
-foreach (@designs) {
-	$c += countMyFunkyTowelsNowSirOhYes($_, \@patterns, 1);
-}
-
-say "Part2 = $c";
+say "Part1 = $part1";
+say "Part2 = $part2";
 
 sub countMyFunkyTowelsNowSirOhYes {
-	my ($d, $pref, $part2) = @_;
+	my ($d, $pref) = @_;
 	my $count = 0;
-	# borkable base case
 	return 1 unless length $d;
 	foreach my $p (@{$pref}) {
 		if (index($d, $p) == 0) {
 			my $towelright = substr $d, length $p;
-			$count += (countMyFunkyTowelsNowSirOhYes($towelright, $pref, $part2));
+			$count += (countMyFunkyTowelsNowSirOhYes($towelright, $pref));
 			}
 		}
-	return ($part2) ? $count : ($count > 0);
+	return $count;
 }
