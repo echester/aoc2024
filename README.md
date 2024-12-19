@@ -408,3 +408,32 @@ sub dijk {
 	return -1;
 }
 ```
+
+## Day 19 - Linen Layout
+
+_"I only need 3 more stars to have beaten my performance last year, and
+then I can safely put this whole basket of nonsense down."_
+
+I started this with a _very elegant_ validity matrix approach, but it was very
+quickly thwarted by the real input data, because there are cases where a given
+sequence (even a long one) is only valid with things either side of it, even
+if the sequence itself is valid... which... smells... like.... recursion.
+
+My old nemesis.
+Even the old nemensis of Old Harry Dwmpus. Feck.
+
+Immediately, its a pain. And its slow, so break out memoization in the forlorn
+hope of base case exit redemption. Part 1 acceptably fast. Part 2, not so much.
+And then, while making a cup of tea, the five-head-slap moment when i realised
+I hadn't memoized my part2 function. Its actually pretty decent now.
+Star star, tick tick, bosh bosh.
+
+I cleaned up the code to use a single function for both part 1 and part 2 because it was so similar, even if it means the very inefficient solving of part 1 by iterating WAY more than needed. Still, its acceptably swift, and I'd rather have less code.
+
+Took the opportunity to rename my function as well:
+```perl
+memoize('countMyFunkyTowelsNowSirOhYes');
+```
+
+I liked this, because it was a clean algorithmic challenge which pushed me
+enough into the incorrect way at first that I had to pencil it out.
