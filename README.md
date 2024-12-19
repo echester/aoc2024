@@ -437,3 +437,18 @@ memoize('countMyFunkyTowelsNowSirOhYes');
 
 I liked this, because it was a clean algorithmic challenge which pushed me
 enough into the incorrect way at first that I had to pencil it out.
+
+### Cleanup
+
+There were some obvious unperly things to get rid of after part 2. Here's the shorter function, which i'm happy with.
+```perl
+sub countMyFunkyTowelsNowSirOhYes {
+	my ($d, $pref) = @_;
+	my $count = 0;
+	return 1 unless length $d;
+	foreach (@{$pref}) {
+		$count += (countMyFunkyTowelsNowSirOhYes(substr($d, length), $pref)) unless (index($d, $_));
+		}
+	return $count;
+}
+```

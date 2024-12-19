@@ -48,11 +48,8 @@ sub countMyFunkyTowelsNowSirOhYes {
 	my ($d, $pref) = @_;
 	my $count = 0;
 	return 1 unless length $d;
-	foreach my $p (@{$pref}) {
-		if (index($d, $p) == 0) {
-			my $towelright = substr $d, length $p;
-			$count += (countMyFunkyTowelsNowSirOhYes($towelright, $pref));
-			}
+	foreach (@{$pref}) {
+		$count += (countMyFunkyTowelsNowSirOhYes(substr($d, length), $pref)) unless (index($d, $_));
 		}
 	return $count;
 }
