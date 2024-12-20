@@ -411,6 +411,8 @@ sub dijk {
 
 ## Day 19 - Linen Layout
 
+[PERL]
+
 _"I only need 3 more stars to have beaten my performance last year, and
 then I can safely put this whole basket of nonsense down."_
 
@@ -452,3 +454,26 @@ sub countMyFunkyTowelsNowSirOhYes {
 	return $count;
 }
 ```
+
+## Day 20 - Race Condition
+
+[PERL]
+
+SO I _really_ liked this day. I started late - ofc, cos timezones and life - but read the instructions and coded as
+I went. Every test passed. It grew and became a part 1 solution that worked, but was slow. For sure part 2 was going
+to take even longer, so needed a new approach. So, re-read the instructions and the **VITAL** bit of information I
+initially glossed over was that there was only 1 valid path. So, shortcuts can't be anywhere, they have to touch the
+path. Game changer.
+
+Reworked part 1 using a more intelligent approach to finding cheats, meaning I have 3 methods:
+
+- Part 1 v1 - check for single-thickness walls that could be cheat points; remove the wall block; re-run the Dijkstra; process result; restore the wall; repeat over all candidate cheat points. (Yes, unnecessary and slow.)
+
+- Part 1 v2 - Find points on the path that are separated from the path by a single wall, get its distance, and get the difference in path lengths to measure the value (saving) of the cheat. Nice.
+
+- Part 2 - Use a maximium range of path points using manhattan distance and test all those points similarly to part 1 v2. Fast enough. This is also cool because it solves part 1 if the max cheat length is set to 2.
+
+The main thing to say for it is that I am consolidating my wherewithal using Dijkstra. Manhattan inside a Dijkstra. Or rather, post-processing a Dijkstra path.
+This was hard, but satisfying. I didn't expect to like it, and part 2 was really offputting until you realise that the shortcut routes are irrelevant.
+A cool problem.
+
