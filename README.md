@@ -477,3 +477,15 @@ The main thing to say for it is that I am consolidating my wherewithal using Dij
 This was hard, but satisfying. I didn't expect to like it, and part 2 was really offputting until you realise that the shortcut routes are irrelevant.
 A cool problem.
 
+## Day 21 - Keypad Conundrum
+
+[PERL]
+
+Absolutely the most surprising victory over part 1 have ever managed (or will ever).
+At nearly 6 hours in while i clean up my code, nobody else in the private leaderboard has it done.
+
+The key here was a couple of small epiphanies. Perhaps 1.5 epiphanies.
+
+- Firstly - that there are only 2 shortest paths on the first remote keypad that can lead to a shortest path on the outer keypad; all other combos are worse (because you have to move more than necessary on the next pad out).
+
+- Next, that the order of either of the 2 shortest sequences needs to adapt to the context in which the sequence is used.
