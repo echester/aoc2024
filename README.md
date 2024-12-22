@@ -489,3 +489,13 @@ The key here was a couple of small epiphanies. Perhaps 1.5 epiphanies.
 - Firstly - that there are only 2 shortest paths on the first remote keypad that can lead to a shortest path on the outer keypad; all other combos are worse (because you have to move more than necessary on the next pad out).
 
 - Next, that the order of either of the 2 shortest sequences needs to adapt to the context in which the sequence is used.
+
+## Day 22 - Monkey Market
+
+[PERL]
+
+Absurdly easy and fast - first in private leaderboard again (2 days in a row!).
+This is only a minimally cleaned up part 1 - which ought to be (and was) a
+MAHOOSIVE RED FLAG for part 2.
+
+
