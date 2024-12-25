@@ -498,4 +498,25 @@ Absurdly easy and fast - first in private leaderboard again (2 days in a row!).
 This is only a minimally cleaned up part 1 - which ought to be (and was) a
 MAHOOSIVE RED FLAG for part 2.
 
+_(many hours later...)_
+
+So yeah part 2 was hard, or at least, was hard to understand and build a sensible data structure for.
+I'm a bit disappointed at how short the solution is when you work out how to do it.
+My main issue here was really screwing up by tracking things that were buyer (monkey) specific on price (bananas) at global scope when
+they needed to be initialised again every time around.
+
+## Day 25 - Code Chronical
+
+[PERL]
+
+(bit behind with part 2s :( )
+
+I always look forward to the final day because its easy. This was just building lists and checking the totals weren't exceeded.
+Nothing interesting here, and many ways to solve it. I chose to flip the grids sideways and use `index` of `#` or `.` to get
+the lengths of keys and locks. I've used more loops than needed, which is tedious -- it would be nice to build the data structure
+on-the-fly while reading input instead of having a second step of post-processing the grids. Oh well. Its Christmas Day, and I've not had more than 4 hours sleep
+for over a week.
+
+Merry winterval.
+
 
