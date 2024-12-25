@@ -505,7 +505,17 @@ I'm a bit disappointed at how short the solution is when you work out how to do 
 My main issue here was really screwing up by tracking things that were buyer (monkey) specific on price (bananas) at global scope when
 they needed to be initialised again every time around.
 
-## Day 25 - Code Chronical
+## Day 23
+
+[PERL]
+
+
+## Day 24
+
+[PERL]
+
+
+## Day 25 - Code Chronicle
 
 [PERL]
 
