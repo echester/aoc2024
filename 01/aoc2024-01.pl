@@ -12,20 +12,17 @@
 # For the avoidance of doubt - the comments were written afterwards, and the print debug
 # removed... i'm not that professional. Fo real. 
 
+use lib '../../aocbocs';
+use aocbocs;
+
 # initialise stuffs
 my @left = my @right = ();
 my $c=0;
 
 # grab input, dropping columm values into separate arrays
-while(<>) {
-	/^(\w+)\s+(\w+)/;
-	push @left, $1;
-	push @right, $2;
-}
-
-# sort both arrays
-@left = sort @left;
-@right = sort @right;
+my @in = iFile2Columns();
+my @left = sort @{$in[0]};
+my @right = sort @{$in[1]};
 
 # part 1 - sum absolute differences of corresponding array elements
 for (my $i=0; $i<=$#left; $i++) { $c += abs($left[$i] - $right[$i]); }
